@@ -1,65 +1,184 @@
-import Image from "next/image";
+"use client";
+
+import { motion } from "framer-motion";
+
+const menuItems = [
+  {
+    number: "01",
+    name: "WELCOME TO WAGYUMAFIA",
+    description: "웰컴 코스",
+  },
+  {
+    number: "02",
+    name: "WAGYU JERKY",
+    description: "와규 육포",
+  },
+  {
+    number: "03",
+    name: "MANGALICA PORK SIU MAI",
+    description: "망갈리차 돼지고기 슈마이",
+  },
+  {
+    number: "04",
+    name: "OCTOPUS, WHELK, WILD GARLIC",
+    description: "문어, 소라, 야생 마늘",
+  },
+  {
+    number: "05",
+    name: "WAGYUMAFIA SAND",
+    description: "와규마피아 카츠산도",
+  },
+  {
+    number: "06",
+    name: "JAPANESE YAKINIKU",
+    description: "일본식 야키니쿠",
+    subItems: [
+      { en: "BEEF TONGUE", ko: "우설" },
+      { en: "SKIRT STEAK", ko: "안창살" },
+      { en: "HANGING TENDER", ko: "토시살" },
+      { en: "RIB CAP", ko: "립캡/꽃등심" },
+    ],
+  },
+  {
+    number: "07",
+    name: "TAKIKOMI RICE",
+    description: "타키코미 밥 (솥밥)",
+  },
+];
+
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.15,
+      delayChildren: 0.3,
+    },
+  },
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.6,
+      ease: [0.25, 0.46, 0.45, 0.94],
+    },
+  },
+};
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
+    <main className="min-h-screen bg-black text-[#F5F0E6] flex flex-col items-center justify-center px-6 py-16 md:py-24">
+      <motion.div
+        className="max-w-2xl w-full"
+        variants={containerVariants}
+        initial="hidden"
+        animate="visible"
+      >
+        {/* Header */}
+        <motion.div variants={itemVariants} className="text-center mb-16">
+          <h1 className="text-3xl md:text-5xl font-light tracking-[0.3em] text-[#C9A962] mb-4">
+            WAGYUMAFIA
           </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+          <div className="flex items-center justify-center gap-4 mb-6">
+            <span className="h-[1px] w-12 bg-[#C9A962]/50"></span>
+            <span className="text-[#C9A962] text-sm tracking-[0.2em]">×</span>
+            <span className="h-[1px] w-12 bg-[#C9A962]/50"></span>
+          </div>
+          <h2 className="text-xl md:text-2xl font-light tracking-[0.2em] text-[#F5F0E6]/80">
+            WELLNESS
+          </h2>
+        </motion.div>
+
+        {/* Date */}
+        <motion.div variants={itemVariants} className="text-center mb-16">
+          <p className="text-lg md:text-xl font-light tracking-[0.15em] text-[#F5F0E6]/60">
+            2026.04.26
           </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
+          <p className="text-sm tracking-[0.3em] text-[#C9A962]/70 mt-2">
+            SUNDAY
+          </p>
+        </motion.div>
+
+        {/* Divider */}
+        <motion.div
+          variants={itemVariants}
+          className="flex items-center justify-center mb-12"
+        >
+          <span className="h-[1px] w-24 bg-gradient-to-r from-transparent via-[#C9A962]/40 to-transparent"></span>
+        </motion.div>
+
+        {/* Menu */}
+        <motion.div className="space-y-8 mb-16">
+          {menuItems.map((item, index) => (
+            <motion.div
+              key={index}
+              variants={itemVariants}
+              className="group"
+            >
+              <div className="flex items-start gap-6">
+                <span className="text-[#C9A962]/40 text-xs font-light tracking-widest mt-1">
+                  {item.number}
+                </span>
+                <div className="flex-1">
+                  <h3 className="text-sm md:text-base font-light tracking-[0.15em] text-[#F5F0E6] mb-1">
+                    {item.name}
+                  </h3>
+                  <p className="text-xs text-[#F5F0E6]/40 tracking-wide">
+                    {item.description}
+                  </p>
+                  {item.subItems && (
+                    <div className="mt-4 ml-4 space-y-2">
+                      {item.subItems.map((sub, subIndex) => (
+                        <div
+                          key={subIndex}
+                          className="flex items-center gap-3"
+                        >
+                          <span className="w-1 h-1 bg-[#C9A962]/30 rounded-full"></span>
+                          <span className="text-xs text-[#F5F0E6]/60 tracking-wider">
+                            {sub.en}
+                          </span>
+                          <span className="text-xs text-[#F5F0E6]/30">
+                            {sub.ko}
+                          </span>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              </div>
+            </motion.div>
+          ))}
+        </motion.div>
+
+        {/* Divider */}
+        <motion.div
+          variants={itemVariants}
+          className="flex items-center justify-center mb-12"
+        >
+          <span className="h-[1px] w-24 bg-gradient-to-r from-transparent via-[#C9A962]/40 to-transparent"></span>
+        </motion.div>
+
+        {/* Footer */}
+        <motion.div variants={itemVariants} className="text-center">
+          <p className="text-lg md:text-xl font-light tracking-[0.2em] text-[#C9A962]/80 italic">
+            See you tonight
+          </p>
+        </motion.div>
+
+        {/* Logo/Brand */}
+        <motion.div
+          variants={itemVariants}
+          className="text-center mt-20 opacity-30"
+        >
+          <p className="text-[10px] tracking-[0.4em] text-[#F5F0E6]/30">
+            YAKINIKUMAFIA
+          </p>
+        </motion.div>
+      </motion.div>
+    </main>
   );
 }
